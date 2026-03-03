@@ -1,5 +1,7 @@
+// define acceptable work-order-statuses
 export type WorkOrderStatus = 'open' | 'in-progress' | 'complete' | 'blocked';
 
+// define acceptable work-order types and structure
 export interface WorkOrderDocument {
   docId: string;
   docType: 'workOrder';
