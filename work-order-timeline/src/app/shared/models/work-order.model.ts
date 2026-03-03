@@ -7,9 +7,9 @@ export interface WorkOrderDocument {
   docType: 'workOrder';
   data: {
     name: string;
-    workCenterId: string;
+    workCenterId: string; // References workCenterDocument.docId
     status: WorkOrderStatus;
-    startDate: string;
-    endDate: string;
+    startDate: string; // ISO format (e.g., "2025-01-15")
+    endDate: string; // ISO format
   };
 }
