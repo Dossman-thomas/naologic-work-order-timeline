@@ -1,0 +1,16 @@
+.timeline-container {
+  display: flex;
+  height: 600px;
+  border: 1px solid #ccc;
+}
+
+:host {
+  width: 260px;
+  flex-shrink: 0;
+  border-right: 1px solid #ddd;
+}
+
+.timeline-scroll {
+  overflow-x: auto;
+  flex: 1;
+}
