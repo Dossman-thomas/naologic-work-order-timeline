@@ -1,1 +1,9 @@
-<div class="timeline-header-row">Timeline Head Placeholder</div>
+<div class="timeline-header">
+  <div
+    class="timeline-cell"
+    *ngFor="let cell of cells; trackBy: trackByDate"
+    [style.width.px]="CELL_WIDTH"
+  >
+    {{ cell.label }}
+  </div>
+</div>
