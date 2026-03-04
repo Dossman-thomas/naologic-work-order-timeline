@@ -16,11 +16,20 @@
 
 // global row styling
 .timeline-header-row {
-    height: var(--header-row); 
+    height: var(--header-row);
+    border-bottom: 1px solid #ccc;  
+    display: flex;
+    align-items: center; 
+    padding: 0 12px; 
 }
 
 .timeline-row {
     height: var(--rows); 
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    box-sizing: border-box; 
 }
 
 .timeline-row.first-row {
