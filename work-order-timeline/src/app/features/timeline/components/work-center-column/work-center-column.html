@@ -6,7 +6,7 @@
   <!-- dynamic work centers, w/increased first row height per sketch -->
   <div
     *ngFor="let wc of workCenters; let i = index; trackBy: trackByDocId"
-    class="timeline-row"
+    class="aligned-rows work-center-rows"
     [class.first-row]="i === 0"
   >
     {{ wc.data.name }}

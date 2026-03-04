@@ -1,1 +1,6 @@
-<div style="width: 1600px; height: 100%">Timeline body placeholder</div>
+<div style="width: 1600px; height: 100%">
+  <div class="aligned-rows first-row">first row</div>
+  <div class="aligned-rows" *ngFor="let wc of workCenters.splice(1); trackBy: trackById">
+    other rows
+  </div>
+</div>

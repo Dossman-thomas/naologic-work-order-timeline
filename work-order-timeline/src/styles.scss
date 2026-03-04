@@ -20,18 +20,18 @@
     border-bottom: 1px solid #ccc;  
     display: flex;
     align-items: center; 
-    padding: 0 12px; 
+    padding: 0 12px;
 }
 
-.timeline-row {
+.aligned-rows {
     height: var(--rows); 
-    border-bottom: 1px solid #ccc;
+    // border-bottom: 1px solid #ccc;
     display: flex;
     align-items: center;
     padding: 0 12px;
     box-sizing: border-box; 
 }
 
-.timeline-row.first-row {
+.aligned-rows.first-row {
     height: var(--first-row); 
 }

@@ -17,7 +17,7 @@ export class WorkCenterColumn {
     this.workCenters = this.workOrderService.workCenters;
   }
 
-  // add id key to track wc document order
+  // add id key tracking for performance
   trackByDocId(_: number, item: WorkCenterDocument) {
     return item.docId;
   }
