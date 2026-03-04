@@ -1,9 +1,24 @@
 import { Component } from '@angular/core';
+import { WorkOrderService } from '../../../../shared/seeds/work-order.seeds';
+import { WorkCenterDocument } from '../../../../shared/models/work-center.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-work-center-column',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './work-center-column.html',
   styleUrl: './work-center-column.scss',
 })
-export class WorkCenterColumn {}
+export class WorkCenterColumn {
+  // init workCenters array
+  workCenters: WorkCenterDocument[] = [];
+
+  constructor(private workOrderService: WorkOrderService) {
+    this.workCenters = this.workOrderService.workCenters;
+  }
+
+  // add id key to track wc document order
+  trackByDocId(_: number, item: WorkCenterDocument) {
+    return item.docId;
+  }
+}
