@@ -2,3 +2,32 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+
+:root {
+    // colors
+    --bg-color: rgba(255, 255, 255, 1); 
+
+    // spacing
+    --header-row: 36px; 
+    --first-row: 60px; 
+    --rows: 48px; 
+}
+
+.work-order-column {
+    width: 380px;
+    height: 100%;
+    border-right: 1px solid #ccc;
+}
+
+.timeline-header-row {
+    height: var(--header-row); 
+}
+
+.timeline-first-row {
+    height: var(--first-row); 
+}
+
+.timeline-row {
+    height: var(--rows); 
+}
