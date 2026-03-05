@@ -15,6 +15,14 @@
       *ngFor="let cell of cells; trackBy: trackByDate"
       [style.width.px]="160"
     ></div>
+    <div
+      *ngFor="let bar of barsByWorkCenter[workCenters[0].docId]"
+      class="timeline-bar"
+      [style.left.px]="bar.left"
+      [style.width.px]="bar.width"
+    >
+      {{ bar.name }}
+    </div>
   </div>
 
   <div class="aligned-rows no-pad" *ngFor="let wc of remainingWorkCenters; trackBy: trackById">
@@ -23,5 +31,14 @@
       *ngFor="let cell of cells; trackBy: trackByDate"
       [style.width.px]="160"
     ></div>
+
+    <div
+      *ngFor="let bar of barsByWorkCenter[wc.docId]"
+      class="timeline-bar"
+      [style.left.px]="bar.left"
+      [style.width.px]="bar.width"
+    >
+      {{ bar.name }}
+    </div>
   </div>
 </div>
