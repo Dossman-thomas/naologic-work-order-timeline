@@ -4,6 +4,7 @@ import { WorkOrderService } from '../../../../shared/seeds/work-order.seeds';
 import { WorkCenterDocument } from '../../../../shared/models/work-center.model';
 import { TimelineCell } from '../../../../shared/models/timeline-cell.model';
 import { Timescale } from '../../../../shared/models/timeline.types';
+import { generateMonthCells } from '../../../../shared/utils';
 
 @Component({
   selector: 'app-timeline-body',
@@ -17,43 +18,14 @@ export class TimelineBody implements OnInit {
 
   cells: TimelineCell[] = [];
 
-  // constructor(workOrderService: WorkOrderService) {
-  //   this.workOrderService = workOrderService;
-  // }
-
-  readonly timelineLength = 12;
-  readonly range = 1;
-  // readonly workCenters = this.workOrderService.workCenters;
-
   ngOnInit() {
     this.generateTimeline();
   }
 
-  private generateMonths() {
-    const today = new Date();
-    const start = new Date(today.getFullYear(), today.getMonth(), 1);
-
-    for (let i = -this.range; i <= this.timelineLength; i++) {
-      const d = new Date(start);
-      d.setMonth(start.getMonth() + i);
-
-      this.cells.push({
-        date: d,
-        label: '',
-      });
-    }
-  }
-
   private generateTimeline() {
-    this.cells = [];
-
     if (this.timescale === 'month') {
-      this.generateMonths();
+      this.cells = generateMonthCells(12, 1, true);
     }
-  }
-
-  trackByDate(index: number, item: TimelineCell) {
-    return item.date.toISOString();
   }
 
   private workOrderService = inject(WorkOrderService);
@@ -64,5 +36,9 @@ export class TimelineBody implements OnInit {
   // add key tracking for performance
   trackById(_: number, item: WorkCenterDocument) {
     return item.docId;
+  }
+
+  trackByDate(index: number, item: TimelineCell) {
+    return item.date.toISOString();
   }
 }
