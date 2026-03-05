@@ -27,36 +27,42 @@ export function calculateBarStyle(
   };
 }
 
-// calculate bar
+export function getDatePixelPosition(date: Date, timelineStart: Date, cellWidth: number) {
+  const monthOffset =
+    (date.getFullYear() - timelineStart.getFullYear()) * 12 +
+    (date.getMonth() - timelineStart.getMonth());
+
+  const daysInMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+
+  const dayOfMonth = date.getDate() - 1;
+
+  const dayWidth = cellWidth / daysInMonth;
+
+  return monthOffset * cellWidth + dayOfMonth * dayWidth;
+}
+
+// calculate bar length by pixels
 export function calculateTimelineBars(
   workOrders: WorkOrderDocument[],
   timelineStart: Date,
   cellWidth: number,
 ): TimelineBar[] {
-  const MS_PER_DAY = 1000 * 60 * 60 * 24;
-
-  const daysInMonth = new Date(
-    timelineStart.getFullYear(),
-    timelineStart.getMonth() + 1,
-    0,
-  ).getDate();
-
-  const dayWidth = cellWidth / daysInMonth;
-
   return workOrders.map((order) => {
     const start = new Date(order.data.startDate);
     const end = new Date(order.data.endDate);
+    const endPlusOne = new Date(end);
+    endPlusOne.setDate(endPlusOne.getDate() + 1);
 
-    const daysFromStart = (start.getTime() - timelineStart.getTime()) / MS_PER_DAY;
+    const startPixel = getDatePixelPosition(start, timelineStart, cellWidth);
 
-    const durationDays = (end.getTime() - start.getTime()) / MS_PER_DAY + 1;
+    const endPixel = getDatePixelPosition(endPlusOne, timelineStart, cellWidth);
 
     return {
       id: order.docId,
       name: order.data.name,
       status: order.data.status,
-      left: daysFromStart * dayWidth,
-      width: durationDays * dayWidth,
+      left: startPixel,
+      width: endPixel - startPixel,
     };
   });
 }
