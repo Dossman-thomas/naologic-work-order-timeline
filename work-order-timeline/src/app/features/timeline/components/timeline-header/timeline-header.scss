@@ -5,6 +5,8 @@
   background: white;
   z-index: 2;
   height: var(--header-row);
+  width: max-content; 
+  min-width: 100%; 
   border-bottom: 1px solid #ddd;
 }
 
@@ -15,5 +17,5 @@
   justify-content: center;
   border-right: 1px solid #eee;
   font-size: 12px;
-  white-space: nowarp; // prevents wrapping
+  white-space: nowrap; // prevents wrapping
 }

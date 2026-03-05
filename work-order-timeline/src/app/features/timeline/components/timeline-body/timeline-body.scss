@@ -1,0 +1,35 @@
+.timeline-body {
+//   width: 1600px;
+  min-height: 100vh;
+  position: relative; // ⭐ IMPORTANT
+}
+
+.vertical-grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: none; // ⭐ allows clicks through
+  z-index: 0;
+}
+
+.v-line {
+  flex-shrink: 0;
+  border-right: 1px solid #e5e7eb;
+}
+
+.aligned-rows {
+  display: flex;
+//   border-bottom: 1px solid #e5e7eb;
+  position: relative; 
+  z-index: 1; 
+}
+
+.no-pad {
+    padding: 0; 
+}
+
+.timeline-cell {
+  flex-shrink: 0;
+//   border-right: 1px solid #e5e7eb;
+  height: 100%;
+}

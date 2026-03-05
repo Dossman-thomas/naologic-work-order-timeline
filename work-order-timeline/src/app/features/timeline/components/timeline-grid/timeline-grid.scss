@@ -1,16 +1,18 @@
 .timeline-container {
   display: flex;
   margin-left: 102px; 
-  height: 600px;
+  // height: 600px;
   border: 1px solid #ccc;
 }
 
+// left column
 :host {
   width: 260px;
   flex-shrink: 0;
   border-right: 1px solid #ddd;
 }
 
+// horizontal scroll
 .timeline-scroll {
   overflow-x: auto;
   flex: 1;

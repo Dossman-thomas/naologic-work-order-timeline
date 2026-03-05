@@ -16,6 +16,8 @@ export class TimelineHeader implements OnInit {
   cells: TimelineCell[] = [];
 
   readonly CELL_WIDTH = 160;
+  readonly range = 1;
+  readonly timelineLength = 12;
 
   ngOnInit() {
     this.generateTimeline();
@@ -27,11 +29,11 @@ export class TimelineHeader implements OnInit {
     // Start at first day of current month
     const start = new Date(today.getFullYear(), today.getMonth(), 1);
 
-    const range = 1;
+    // const range = 1;
 
-    const timelineLength = 12;
+    // const timelineLength = 12;
 
-    for (let i = -range; i <= timelineLength; i++) {
+    for (let i = -this.range; i <= this.timelineLength; i++) {
       const d = new Date(start);
       d.setMonth(start.getMonth() + i);
 

@@ -1,6 +1,27 @@
-<div style="width: 1600px; height: 100%">
-  <div class="aligned-rows first-row">first row</div>
-  <div class="aligned-rows" *ngFor="let wc of workCenters.splice(1); trackBy: trackById">
-    other rows
+<div class="timeline-body">
+  <!-- vertical lines layer -->
+  <div class="vertical-grid">
+    <div
+      class="v-line"
+      *ngFor="let cell of cells; trackBy: trackByDate"
+      [style.width.px]="160"
+    ></div>
+  </div>
+
+  <!-- rows -->
+  <div class="aligned-rows first-row no-pad">
+    <div
+      class="timeline-cell"
+      *ngFor="let cell of cells; trackBy: trackByDate"
+      [style.width.px]="160"
+    ></div>
+  </div>
+
+  <div class="aligned-rows no-pad" *ngFor="let wc of remainingWorkCenters; trackBy: trackById">
+    <div
+      class="timeline-cell"
+      *ngFor="let cell of cells; trackBy: trackByDate"
+      [style.width.px]="160"
+    ></div>
   </div>
 </div>
