@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-work-center-column',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './work-center-column.html',
   styleUrl: './work-center-column.scss',

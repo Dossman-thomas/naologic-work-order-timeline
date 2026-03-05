@@ -5,6 +5,7 @@ import { TimelineBody } from '../timeline-body/timeline-body';
 
 @Component({
   selector: 'app-timeline-grid',
+  standalone: true,
   imports: [TimelineHeader, WorkCenterColumn, TimelineBody],
   templateUrl: './timeline-grid.html',
   styleUrl: './timeline-grid.scss',
