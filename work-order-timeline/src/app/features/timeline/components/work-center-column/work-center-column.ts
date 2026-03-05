@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { WorkOrderService } from '../../../../shared/seeds/work-order.seeds';
-import { WorkCenterDocument } from '../../../../shared/models/work-center.model';
+import { WorkCenterDocument } from '../../../../shared/models';
 import { CommonModule } from '@angular/common';
 
 @Component({

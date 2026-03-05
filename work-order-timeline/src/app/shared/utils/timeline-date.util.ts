@@ -1,5 +1,6 @@
 import { TimelineCell } from '../models/timeline-cell.model';
 
+// function for creating timeline cells
 export function generateMonthCells(
   timelineLength: number,
   range: number,

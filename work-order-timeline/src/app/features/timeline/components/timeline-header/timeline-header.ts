@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TimelineCell } from '../../../../shared/models/timeline-cell.model';
-import { Timescale } from '../../../../shared/models/timeline.types';
+import { TimelineCell, Timescale } from '../../../../shared/models';
 import { generateMonthCells } from '../../../../shared/utils';
 
 @Component({
