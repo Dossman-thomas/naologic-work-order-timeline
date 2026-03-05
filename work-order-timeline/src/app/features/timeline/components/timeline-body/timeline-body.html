@@ -35,6 +35,7 @@
     <div
       *ngFor="let bar of barsByWorkCenter[wc.docId]"
       class="timeline-bar"
+      [ngClass]="'status-' + bar.status"
       [style.left.px]="bar.left"
       [style.width.px]="bar.width"
     >
