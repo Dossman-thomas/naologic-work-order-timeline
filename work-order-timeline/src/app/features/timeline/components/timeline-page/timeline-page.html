@@ -1,7 +1,14 @@
 <div class="page">
   <h1>Work Orders</h1>
 
-  <div class="toolbar">Timescale: Month</div>
+  <div class="toolbar">
+    <label for="Timescale selection">Timescale:</label>
+    <select (change)="onTimescaleChange($event)">
+      <option value="day">Day</option>
+      <option value="week">Week</option>
+      <option value="month">Month</option>
+    </select>
+  </div>
 
   <app-timeline-grid></app-timeline-grid>
 </div>

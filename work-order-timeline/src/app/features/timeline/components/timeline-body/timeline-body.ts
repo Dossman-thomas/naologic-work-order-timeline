@@ -7,7 +7,12 @@ import {
   Timescale,
   TimelineBar,
 } from '../../../../shared/models';
-import { generateMonthCells, calculateTimelineBars } from '../../../../shared/utils';
+import {
+  generateDayCells,
+  generateWeekCells,
+  generateMonthCells,
+  calculateTimelineBars,
+} from '../../../../shared/utils';
 
 @Component({
   selector: 'app-timeline-body',
@@ -21,14 +26,30 @@ export class TimelineBody implements OnInit {
   cells: TimelineCell[] = [];
   barsByWorkCenter: Record<string, TimelineBar[]> = {};
 
+  TIMELINE_CONFIG = {
+    day: { length: 24, range: 1 },
+    week: { length: 7, range: 1 },
+    month: { length: 12, range: 1 },
+  };
+
+  //timeline config
+  timelineLength = 12;
+  range = 1;
+  cellWidth = 160;
+
   ngOnInit() {
     // generate timeline grid
     this.generateTimeline();
+    // this.buildTimeline();
 
     // render timeline bars on grid
     const timelineStart = this.cells[0].date;
 
-    const bars = calculateTimelineBars(this.workOrderService.workOrders, timelineStart, 160);
+    const bars = calculateTimelineBars(
+      this.workOrderService.workOrders,
+      timelineStart,
+      this.cellWidth,
+    );
 
     bars.forEach((bar) => {
       const order = this.workOrderService.workOrders.find((o) => o.docId === bar.id);
@@ -45,10 +66,27 @@ export class TimelineBody implements OnInit {
     });
   }
 
+  onTimescaleChange(event: Event) {
+    const scale = (event.target as HTMLSelectElement).value as Timescale;
+    this.timescale = scale;
+    this.generateTimeline();
+  }
+
   private generateTimeline() {
-    if (this.timescale === 'month') {
-      this.cells = generateMonthCells(12, 1, true);
-    }
+    const config = this.TIMELINE_CONFIG[this.timescale];
+
+    const generators = {
+      day: generateDayCells,
+      week: generateWeekCells,
+      month: generateMonthCells,
+    };
+
+    this.cells = generators[this.timescale](config.length, config.range);
+  }
+
+  private buildTimeline() {
+    this.generateTimeline();
+    // this.renderBars();
   }
 
   private workOrderService = inject(WorkOrderService);
